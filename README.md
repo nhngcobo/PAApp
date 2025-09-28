@@ -265,17 +265,6 @@ const filteredEmployees = employees.filter(emp => {
 
 ### **Installation**
 
-1. **Clone the repository**
-```bash
-git clone https://github.com/Deloitte-Africa/talentsync-ai-assistance.git
-cd talentsync-ai-assistance
-```
-
-**Note:** The latest updated code is available on the `front-end` branch:
-```bash
-git checkout front-end
-```
-
 2. **Setup Backend**
 ```bash
 cd backend
