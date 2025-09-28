@@ -1,0 +1,222 @@
+{
+  "info": {
+    "name": "PA App API",
+    "description": "API collection for PA App backend",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Upload Employee",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "Name",
+              "value": "John Doe",
+              "type": "text"
+            },
+            {
+              "key": "Email",
+              "value": "john.doe@company.com",
+              "type": "text"
+            },
+            {
+              "key": "Role",
+              "value": "Full Stack Developer",
+              "type": "text"
+            },
+            {
+              "key": "Skills",
+              "value": "JavaScript, React, Node.js, Problem Solving",
+              "type": "text"
+            },
+            {
+              "key": "Technologies",
+              "value": "React Native, TypeScript, Azure, SQL Server",
+              "type": "text"
+            },
+            {
+              "key": "Department",
+              "value": "Engineering",
+              "type": "text"
+            },
+            {
+              "key": "ExperienceYears",
+              "value": "5",
+              "type": "text"
+            },
+            {
+              "key": "Rating",
+              "value": "4.5",
+              "type": "text"
+            },
+            {
+              "key": "image",
+              "type": "file",
+              "src": "path/to/employee/photo.jpg"
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://localhost:5214/api/employees/upload",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5214",
+          "path": [
+            "api",
+            "employees",
+            "upload"
+          ]
+        },
+        "description": "Upload a new employee with optional profile image"
+      }
+    },
+    {
+      "name": "Update Employee",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "Name",
+              "value": "John Doe Updated",
+              "type": "text"
+            },
+            {
+              "key": "Email",
+              "value": "john.doe.updated@company.com",
+              "type": "text"
+            },
+            {
+              "key": "Role",
+              "value": "Senior Full Stack Developer",
+              "type": "text"
+            },
+            {
+              "key": "Skills",
+              "value": "JavaScript, React, Node.js, Python, Machine Learning",
+              "type": "text"
+            },
+            {
+              "key": "Technologies",
+              "value": "React Native, TypeScript, Azure, SQL Server, Docker",
+              "type": "text"
+            },
+            {
+              "key": "Department",
+              "value": "Engineering",
+              "type": "text"
+            },
+            {
+              "key": "ExperienceYears",
+              "value": "7",
+              "type": "text"
+            },
+            {
+              "key": "Rating",
+              "value": "4.8",
+              "type": "text"
+            },
+            {
+              "key": "image",
+              "type": "file",
+              "src": "path/to/new/employee/photo.jpg"
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://localhost:5214/api/employees/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5214",
+          "path": [
+            "api",
+            "employees",
+            "1"
+          ]
+        },
+        "description": "Update an existing employee by ID with optional new profile image"
+      }
+    },
+    {
+      "name": "Get Employee by ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5214/api/employees/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5214",
+          "path": [
+            "api",
+            "employees",
+            "1"
+          ]
+        },
+        "description": "Get a specific employee by ID"
+      }
+    },
+    {
+      "name": "Get All Employees",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5214/api/employees",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5214",
+          "path": [
+            "api",
+            "employees"
+          ]
+        },
+        "description": "Get all employees from the database"
+      }
+    },
+    {
+      "name": "Match Employees",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"skills\": [\"JavaScript\", \"React\"],\n  \"technologies\": [\"React Native\", \"TypeScript\"],\n  \"projectName\": \"Mobile App Development\",\n  \"description\": \"Need developers for a new mobile application\",\n  \"timeline\": \"3 months\",\n  \"priority\": \"High\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5214/api/employees/match",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5214",
+          "path": [
+            "api",
+            "employees",
+            "match"
+          ]
+        },
+        "description": "Find matching employees for a project"
+      }
+    }
+  ]
+}

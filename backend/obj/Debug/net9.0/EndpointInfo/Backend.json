@@ -1,0 +1,683 @@
+{
+  "openapi": "3.0.4",
+  "info": {
+    "title": "Backend",
+    "version": "1.0"
+  },
+  "paths": {
+    "/api/AIAnalytics/team-analysis": {
+      "post": {
+        "tags": [
+          "AIAnalytics"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AITeamAnalysisRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AITeamAnalysisRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AITeamAnalysisRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/AIAnalytics/health": {
+      "get": {
+        "tags": [
+          "AIAnalytics"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/AIAnalytics/compare-teams": {
+      "post": {
+        "tags": [
+          "AIAnalytics"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/AITeamAnalysisRequest"
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/AITeamAnalysisRequest"
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/AITeamAnalysisRequest"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Analytics/team-effectiveness": {
+      "post": {
+        "tags": [
+          "Analytics"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TeamAnalysisRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TeamAnalysisRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/TeamAnalysisRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Analytics/capacity-forecast": {
+      "get": {
+        "tags": [
+          "Analytics"
+        ],
+        "parameters": [
+          {
+            "name": "startDate",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "endDate",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Analytics/skill-gaps": {
+      "get": {
+        "tags": [
+          "Analytics"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Analytics/dashboard-metrics": {
+      "get": {
+        "tags": [
+          "Analytics"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Employees": {
+      "get": {
+        "tags": [
+          "Employees"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Employees/match": {
+      "post": {
+        "tags": [
+          "Employees"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MatchRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MatchRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/MatchRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Employees/upload": {
+      "post": {
+        "tags": [
+          "Employees"
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "required": [
+                  "Email",
+                  "Name",
+                  "Role",
+                  "Skills",
+                  "Technologies"
+                ],
+                "type": "object",
+                "properties": {
+                  "Name": {
+                    "maxLength": 100,
+                    "minLength": 0,
+                    "type": "string"
+                  },
+                  "Email": {
+                    "maxLength": 100,
+                    "minLength": 0,
+                    "type": "string",
+                    "format": "email"
+                  },
+                  "Role": {
+                    "maxLength": 100,
+                    "minLength": 0,
+                    "type": "string"
+                  },
+                  "Skills": {
+                    "type": "string"
+                  },
+                  "Technologies": {
+                    "type": "string"
+                  },
+                  "Department": {
+                    "maxLength": 100,
+                    "minLength": 0,
+                    "type": "string"
+                  },
+                  "ExperienceYears": {
+                    "maximum": 50,
+                    "minimum": 0,
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "Rating": {
+                    "maximum": 5,
+                    "minimum": 1,
+                    "type": "number",
+                    "format": "double"
+                  },
+                  "IsOnProject": {
+                    "type": "boolean"
+                  },
+                  "CurrentProjectName": {
+                    "maxLength": 200,
+                    "minLength": 0,
+                    "type": "string"
+                  },
+                  "ProjectEndDate": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "image": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              },
+              "encoding": {
+                "Name": {
+                  "style": "form"
+                },
+                "Email": {
+                  "style": "form"
+                },
+                "Role": {
+                  "style": "form"
+                },
+                "Skills": {
+                  "style": "form"
+                },
+                "Technologies": {
+                  "style": "form"
+                },
+                "Department": {
+                  "style": "form"
+                },
+                "ExperienceYears": {
+                  "style": "form"
+                },
+                "Rating": {
+                  "style": "form"
+                },
+                "IsOnProject": {
+                  "style": "form"
+                },
+                "CurrentProjectName": {
+                  "style": "form"
+                },
+                "ProjectEndDate": {
+                  "style": "form"
+                },
+                "image": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Employees/{id}": {
+      "put": {
+        "tags": [
+          "Employees"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "required": [
+                  "Email",
+                  "Name",
+                  "Role",
+                  "Skills",
+                  "Technologies"
+                ],
+                "type": "object",
+                "properties": {
+                  "Name": {
+                    "maxLength": 100,
+                    "minLength": 0,
+                    "type": "string"
+                  },
+                  "Email": {
+                    "maxLength": 100,
+                    "minLength": 0,
+                    "type": "string",
+                    "format": "email"
+                  },
+                  "Role": {
+                    "maxLength": 100,
+                    "minLength": 0,
+                    "type": "string"
+                  },
+                  "Skills": {
+                    "type": "string"
+                  },
+                  "Technologies": {
+                    "type": "string"
+                  },
+                  "Department": {
+                    "maxLength": 100,
+                    "minLength": 0,
+                    "type": "string"
+                  },
+                  "ExperienceYears": {
+                    "maximum": 50,
+                    "minimum": 0,
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "Rating": {
+                    "maximum": 5,
+                    "minimum": 1,
+                    "type": "number",
+                    "format": "double"
+                  },
+                  "IsOnProject": {
+                    "type": "boolean"
+                  },
+                  "CurrentProjectName": {
+                    "maxLength": 200,
+                    "minLength": 0,
+                    "type": "string"
+                  },
+                  "ProjectEndDate": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "image": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              },
+              "encoding": {
+                "Name": {
+                  "style": "form"
+                },
+                "Email": {
+                  "style": "form"
+                },
+                "Role": {
+                  "style": "form"
+                },
+                "Skills": {
+                  "style": "form"
+                },
+                "Technologies": {
+                  "style": "form"
+                },
+                "Department": {
+                  "style": "form"
+                },
+                "ExperienceYears": {
+                  "style": "form"
+                },
+                "Rating": {
+                  "style": "form"
+                },
+                "IsOnProject": {
+                  "style": "form"
+                },
+                "CurrentProjectName": {
+                  "style": "form"
+                },
+                "ProjectEndDate": {
+                  "style": "form"
+                },
+                "image": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Employees"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Projects": {
+      "get": {
+        "tags": [
+          "Projects"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Projects/{id}": {
+      "get": {
+        "tags": [
+          "Projects"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AITeamAnalysisRequest": {
+        "type": "object",
+        "properties": {
+          "teamProfile": {
+            "$ref": "#/components/schemas/TeamProfile"
+          },
+          "projectContext": {
+            "type": "string",
+            "nullable": true
+          },
+          "focusAreas": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AnalysisFocus"
+            },
+            "nullable": true
+          },
+          "includeDetailedInsights": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "AnalysisFocus": {
+        "enum": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "MatchRequest": {
+        "type": "object",
+        "properties": {
+          "skills": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "technologies": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "projectType": {
+            "type": "string",
+            "nullable": true
+          },
+          "priority": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "StringDoubleKeyValuePair": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "nullable": true
+          },
+          "value": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false
+      },
+      "TeamAnalysisRequest": {
+        "type": "object",
+        "properties": {
+          "employeeIds": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "nullable": true
+          },
+          "projectRequirements": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "TeamProfile": {
+        "type": "object",
+        "properties": {
+          "totalMembers": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "availableMembers": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "skillsBreakdown": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "number",
+              "format": "double"
+            },
+            "nullable": true
+          },
+          "avgExperience": {
+            "type": "number",
+            "format": "double"
+          },
+          "departments": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "nullable": true
+          },
+          "avgMatchScore": {
+            "type": "number",
+            "format": "double"
+          },
+          "availabilityRatio": {
+            "type": "number",
+            "format": "double",
+            "readOnly": true
+          },
+          "dominantSkill": {
+            "$ref": "#/components/schemas/StringDoubleKeyValuePair"
+          },
+          "skillDiversity": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}
